@@ -2,13 +2,13 @@ const CARDS = 5;
 
 // peticion de pokemon al API
 
-for (let i=1; i<=CARDS; i++) {
+for (let i = 1; i <= CARDS; i++) {
     let id = getRandomID(150)
     searchPokemonById(id)
 }
 
 function getRandomID(max) {
-    return Math.floor(Math.random()*max) + 1
+    return Math.floor(Math.random() * max) + 1
 }
 
 let draggableElements = document.querySelector('.draggable-elements')
@@ -25,11 +25,11 @@ async function searchPokemonById(id) {
 
     //arreglo con los nombres de los pokemon
     pokemonNames.push(data.name)
-    pokemonNames = pokemonNames.sort(()=>Math.random()-0.5)
+    pokemonNames = pokemonNames.sort(() => Math.random() - 0.5)
 
     // dibujando los pokemon
     draggableElements.innerHTML = ''
-    pokemonSearched.forEach(pokemon =>{
+    pokemonSearched.forEach(pokemon => {
         draggableElements.innerHTML +=
             `<div class="pokemon">
             <img id="pokemon.name" draggable="true" class="image" 
@@ -46,16 +46,16 @@ async function searchPokemonById(id) {
             </div>`
     })
 
-    let pokemons = document.querySelectorAll('.image');
-    pokemons = [...pokemons]
-    pokemons.forEach(pokemon => {
+    let pokemon = document.querySelectorAll('.image');
+    pokemon = [...pokemon]
+    pokemon.forEach(pokemon => {
         pokemon.addEventListener('dragstart', event => {
             event.dataTransfer.setData('text', event.target.id)
         })
     })
 
     let names = document.querySelectorAll('.names')
-    let equivocadoMsg = document.querySelector('.equivocado')
+    let equivocado = document.querySelector('.equivocado')
     let points = 0;
     names = [...names]
     names.forEach(name => {
@@ -71,7 +71,7 @@ async function searchPokemonById(id) {
                 points++
                 event.target.innerHTML = ''
                 event.target.appenChild(pokemonElement)
-                equivocadoMsg.innerText = ''
+                equivocado.innerText = ''
 
                 if (points == CARDS) {
                     draggableElements.innerHTML = `<p class="Ganar">¡GANASTE</p>`
@@ -79,8 +79,11 @@ async function searchPokemonById(id) {
 
             } else {
                 console.log('NO')
-                equivocadoMsg.innerText = '¡AY VA, TE HAS EQUIVOCADO!'
+                equivocado.innerText = '¡AY VA, TE HAS EQUIVOCADO!'
             }
         })
+
     })
+    
+    
 }
