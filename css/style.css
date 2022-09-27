@@ -15,7 +15,7 @@ body {
 
 .main-container{
     width: 90%;
-    margin: 3.13em auto;
+    margin: 3.1em auto;
     border: 0.3em solid white;
     display: flex;
     flex-direction: column;
@@ -27,18 +27,19 @@ h1, h2{
 }
 
 .draggable-elements, .droppable-elements{
-    border: 0.125em solid black;
+    border: 0.13em solid black;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    gap: 0.63em;
+    gap: 0.6em;
     padding: 1.5em;
     min-height: 14.4em;
 }
 
 .names{
     border: 0.2em dashed brown;
-    min-width: 6.30em;
-    padding: 0 0.63em;
+    min-width: 6.3em;
+    padding: 0 0.6em;
     height: 6.30em;
     display: grid;
     place-content: center;
@@ -46,4 +47,16 @@ h1, h2{
 
 .image {
     width: 7.5em;
+}
+
+.equivocado{
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+.ganar{
+    margin-top: 4.4em;
+    text-align: center;
+    font-size: 2em;
+    color: white;
 }
