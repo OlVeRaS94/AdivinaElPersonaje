@@ -32,7 +32,7 @@ async function searchPokemonById(id) {
     pokemonSearched.forEach(pokemon => {
         draggableElements.innerHTML +=
             `<div class="pokemon">
-            <img id="pokemon.name" draggable="true" class="image" 
+            <img id="${pokemon.name}" draggable="true" class="image" 
             src="${pokemon.sprites.other['official-artwork'].front_default}" alt="pokemon">
             </div>`
     })
@@ -46,9 +46,9 @@ async function searchPokemonById(id) {
             </div>`
     })
 
-    let pokemon = document.querySelectorAll('.image');
-    pokemon = [...pokemon]
-    pokemon.forEach(pokemon => {
+    let pokemons = document.querySelectorAll('.image');
+    pokemons = [...pokemons]
+    pokemons.forEach(pokemon => {
         pokemon.addEventListener('dragstart', event => {
             event.dataTransfer.setData('text', event.target.id)
         })
@@ -70,11 +70,12 @@ async function searchPokemonById(id) {
                 console.log('SI')
                 points++
                 event.target.innerHTML = ''
-                event.target.appenChild(pokemonElement)
+                console.log(pokemonElement)
+                event.target.appendChild(pokemonElement)
                 equivocado.innerText = ''
 
                 if (points == CARDS) {
-                    draggableElements.innerHTML = `<p class="Ganar">¡GANASTE</p>`
+                    draggableElements.innerHTML = `<p class="Ganar"><h1>¡GANASTE¡</h1></p>`
                 }
 
             } else {
