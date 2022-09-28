@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,7 +14,7 @@ body {
     background-size: cover;
 }
 
-.main-container{
+.main-container {
     width: 100%;
     margin: 3.1em auto;
     border: 0.3em solid white;
@@ -22,11 +23,13 @@ body {
     gap: 1.5em;
 }
 
-h1, h2{
+h1,
+h2 {
     text-align: center;
 }
 
-.draggable-elements, .droppable-elements{
+.draggable-elements,
+.droppable-elements {
     border: 0.13em solid black;
     display: flex;
     flex-wrap: wrap;
@@ -36,7 +39,7 @@ h1, h2{
     min-height: 14.4em;
 }
 
-.names{
+.names {
     border: 0.2em dashed brown;
     min-width: 6.3em;
     padding: 0 0.6em;
@@ -49,23 +52,25 @@ h1, h2{
     width: 7.5em;
 }
 
-.equivocado{
+.equivocado {
     text-align: center;
-    font-size: 2em;
+    font-size: 1em;
     color: white;
 }
-.ganar{
+
+.ganar {
     margin-top: 4.4em;
     text-align: center;
     font-size: 2em;
     color: white;
 }
 
-.reset{
-width: 12.5em;
-height: 1.9em;
-background: #26ff00;
-color: #000000;
-cursor: pointer;
-border-radius: 4em;
+.reset {
+    text-align: center;
+    width: 13em;
+    height: 3em;
+    background: #26ff00;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 4em;
 }
