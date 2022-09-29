@@ -2,9 +2,9 @@
 
 <h2>Capturas de pantalla</h2>
 
-![captura1](/capturas%20de%20pantalla/Captura1.JPG)
-![captura2](/capturas%20de%20pantalla/Captura2.JPG)
-![captura3](/capturas%20de%20pantalla/Captura3.JPG)
+![captura1](/capturas-de-pantalla\Captura1.JPG)
+![captura2](/capturas-de-pantalla\Captura2.JPG)
+![captura3](/capturas-de-pantalla\Captura3.JPG)
 
 
 <h2>Tecnologias usadas</h2>
