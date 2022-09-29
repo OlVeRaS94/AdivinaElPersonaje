@@ -1,5 +1,8 @@
 <h1>SHOWCASE DINAMICO ADIVINA EL PERSONAJE</h1>
 
+<h2>FUNCIONAMIENTO</h2>
+EL juego es un adivina el personaje arrastrando el pokémon a su nombre. Cuando aciertas el pokémon, se queda en el nombre y se elimina el nombre del pokémon. Si no aciertas el pokémon te salta un aviso de que te has equivocado.
+
 <h2>Capturas de pantalla</h2>
 
 ![captura1](/capturas-de-pantalla/Captura1.JPG)
@@ -12,8 +15,6 @@ Javascript<br>
 html5<br>
 css
 
-<h2>FUNCIONAMIENTO</h2>
-EL juego es un adivina el personaje arrastrando el pokémon a su nombre. Cuando aciertas el pokémon, se queda en el nombre y se elimina el nombre del pokémon. Si no aciertas el pokémon te salta un aviso de que te has equivocado.
 
 <h2>FECHA DE INICIO Y DE FIN DE PROYECTO</h2>
 Empecé el 19 de septiembre del 2022 y he acabado el 29 de septiembre del 2022
