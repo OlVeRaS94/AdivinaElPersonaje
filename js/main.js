@@ -1,9 +1,9 @@
-const CARDS = 5;
+const CARDS = 10;
 
 // peticion de pokemon al API
 
 for (let i = 1; i <= CARDS; i++) {
-    let id = getRandomID(150)
+    let id = getRandomID(802)
     searchPokemonById(id)
 }
 
@@ -35,6 +35,14 @@ async function searchPokemonById(id) {
             <img id="${pokemon.name}" draggable="true" class="image" 
             src="${pokemon.sprites.other['official-artwork'].front_default}" alt="pokemon">
             </div>`
+        //para hacer que sean shynis
+        // draggableElements.innerHTML = ''
+        //pokemonSearched.forEach(pokemon => {
+        //draggableElements.innerHTML +=
+        //  `<div class="pokemon">
+        // <img id="${pokemon.name}" draggable="true" class="image" 
+        // src="${pokemon.sprites.front_shynis}" alt="pokemon">
+        //  </div>`
     })
 
     //poniendo los nombres a los pokemon
@@ -67,10 +75,10 @@ async function searchPokemonById(id) {
             let pokemonElement = document.querySelector(`#${draggableElementData}`)
             console.log(pokemonElement)
             if (event.target.innerText == draggableElementData) {
-                console.log('SI')
+                //console.log('SI')
                 points++
                 event.target.innerHTML = ''
-                console.log(pokemonElement)
+                //console.log(pokemonElement)
                 event.target.appendChild(pokemonElement)
                 equivocado.innerText = ''
 
@@ -79,12 +87,12 @@ async function searchPokemonById(id) {
                 }
 
             } else {
-                console.log('NO')
+                //console.log('NO')
                 equivocado.innerText = '¡AY VA, TE HAS EQUIVOCADO!'
             }
         })
 
     })
-    
-    
+
+
 }
