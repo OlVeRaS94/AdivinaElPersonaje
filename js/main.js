@@ -4,11 +4,11 @@ const CARDS = 10;
 
 for (let i = 1; i <= CARDS; i++) {
     let id = getRandomID(802)
-    searchPokemonById(id)
+    searchPokemonById(id)//Busca las caracteristicas del pokémon
 }
 
 function getRandomID(max) {
-    return Math.floor(Math.random() * max) + 1
+    return Math.floor(Math.random() * max) + 1 //funcion que me enseña un pokémon aleatorio
 }
 
 let draggableElements = document.querySelector('.draggable-elements')
@@ -16,7 +16,8 @@ let droppableElements = document.querySelector('.droppable-elements')
 
 let pokemonSearched = [];
 let pokemonNames = []
-async function searchPokemonById(id) {
+async function searchPokemonById(id) {//funcion que me trae de una api los pokémon
+    //Las API son mecanismos que permiten a dos componentes de software comunicarse entre sí mediante un conjunto de definiciones y protocolos.
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     const data = await res.json()
 
