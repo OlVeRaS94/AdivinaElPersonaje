@@ -30,7 +30,7 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
     pokemonNames = pokemonNames.sort(() => Math.random() - 0.5)//para tener los nombres desordenados
 
     // dibujando los pokemon
-   // draggableElements.innerHTML = ''//Borra y dibuja los elementos que tengamos en cards
+    draggableElements.innerHTML = ''//Borra y dibuja los elementos que tengamos en cards
   // pokemonSearched.forEach(pokemon => {
        // draggableElements.innerHTML +=
            // `<div class="pokemon">
