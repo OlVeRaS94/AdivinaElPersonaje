@@ -40,15 +40,15 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
 
 
     //para hacer que sean shynis
-    
+
     draggableElements.innerHTML = ''
-    
+
     pokemonSearched.forEach(pokemon => {
         console.log(pokemon.sprites)
         draggableElements.innerHTML +=
             `<div class="pokemon">
          <img id="${pokemon.name}" draggable="true" class="image" 
-         src="${pokemon.sprites.front_shinys}" alt="pokemon">
+         src="${pokemon.sprites.other['home'].front_shiny}" alt="pokemon">
           </div>`
     })
 
