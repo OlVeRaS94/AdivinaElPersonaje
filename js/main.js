@@ -31,22 +31,22 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
 
     // dibujando los pokemon
     draggableElements.innerHTML = ''//Borra y dibuja los elementos que tengamos en cards
-   pokemonSearched.forEach(pokemon => {
-       draggableElements.innerHTML +=
+    pokemonSearched.forEach(pokemon => {
+        draggableElements.innerHTML +=
             `<div class="pokemon">
-           <img id="${pokemon.name}" draggable="true" class="image" 
+            <img id="${pokemon.name}" draggable="true" class="image" 
             src="${pokemon.sprites.other['official-artwork'].front_default}" alt="pokemon">
             </div>`//Pone las imagenes de forma dinamica de los pokemon
 
 
         //para hacer que sean shynis
-       //  draggableElements.innerHTML = ''
-       // pokemonSearched.forEach(pokemon => {
-       // draggableElements.innerHTML +=
+        // draggableElements.innerHTML = ''
+        //pokemonSearched.forEach(pokemon => {
+        //draggableElements.innerHTML +=
         //  `<div class="pokemon">
         // <img id="${pokemon.name}" draggable="true" class="image" 
         // src="${pokemon.sprites.front_shynis}" alt="pokemon">
-         // </div>`
+        //  </div>`
     })
 
     //poniendo los nombres a los pokemon
