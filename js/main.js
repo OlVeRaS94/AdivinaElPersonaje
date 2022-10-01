@@ -31,26 +31,26 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
 
     // dibujando los pokemon
     draggableElements.innerHTML = ''//Borra y dibuja los elementos que tengamos en cards
-     pokemonSearched.forEach(pokemon => {
-    draggableElements.innerHTML +=
-     `<div class="pokemon">
-     <img id="${pokemon.name}" draggable="true" class="image" 
-     src="${pokemon.sprites.other['official-artwork'].front_default}" alt="pokemon">
-     </div>`//Pone las imagenes de forma dinamica de los pokemon
-
-
-    //para hacer que sean shynis
-
-   // draggableElements.innerHTML = ''
-
-    //pokemonSearched.forEach(pokemon => {
-       // console.log(pokemon.sprites)
-       // draggableElements.innerHTML +=
-        //    `<div class="pokemon">
-            // <img id="${pokemon.name}" draggable="true" class="image" 
-           // src="${pokemon.sprites.other['home'].front_shiny}" alt="pokemon">
-         // </div>`
+    pokemonSearched.forEach(pokemon => {
+        draggableElements.innerHTML +=
+            `<div class="pokemon">
+            <img id="${pokemon.name}" draggable="true" class="image" 
+            src="${pokemon.sprites.other['official-artwork'].front_default}" alt="pokemon">
+            </div>`//Pone las imagenes de forma dinamica de los pokemon
     })
+
+        //para hacer que sean shynis
+
+        // draggableElements.innerHTML = ''
+
+        //pokemonSearched.forEach(pokemon => {
+        // console.log(pokemon.sprites)
+        // draggableElements.innerHTML +=
+        // `<div class="pokemon">
+        // <img id="${pokemon.name}" draggable="true" class="image" 
+        // src="${pokemon.sprites.other['home'].front_shiny}" alt="pokemon">
+        // </div>`
+    //})
 
     //poniendo los nombres a los pokemon
     droppableElements.innerHTML = ''
