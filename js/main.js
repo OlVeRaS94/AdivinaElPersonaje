@@ -48,7 +48,7 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
         draggableElements.innerHTML +=
             `<div class="pokemon">
          <img id="${pokemon.name}" draggable="true" class="image" 
-         src="${pokemon.sprites.other['home'].front_shiny}" alt="pokemon">
+         src="${pokemon.sprites.front_shiny}" alt="pokemon">
           </div>`
     })
 
