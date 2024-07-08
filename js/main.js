@@ -3,7 +3,7 @@ const CARDS = 10; //constante para saber cuantos pokemon quiero adivinar
 // peticion de pokemon al API
 
 for (let i = 1; i <= CARDS; i++) {
-    let id = getRandomID(802)//numero de pokemon
+    let id = getRandomID(1025)//numero de pokemon
     searchPokemonById(id)
 }
 
@@ -29,15 +29,6 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
     pokemonNames.push(data.name)//busqueda de los nombres
     pokemonNames = pokemonNames.sort(() => Math.random() - 0.5)//para tener los nombres desordenados
 
-    // dibujando los pokemon
-    //draggableElements.innerHTML = ''//Borra y dibuja los elementos que tengamos en cards
-    //pokemonSearched.forEach(pokemon => {
-        //draggableElements.innerHTML +=
-            //`<div class="pokemon">
-            //<img id="${pokemon.name}" draggable="true" class="image" 
-            //src="${pokemon.sprites.other['official-artwork'].front_default}" alt="pokemon">
-           // </div>`//Pone las imagenes de forma dinamica de los pokemon
-        //})
 
         //para hacer que sean shynis
          draggableElements.innerHTML = ''
@@ -66,6 +57,14 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
             event.dataTransfer.setData('text', event.target.id)
         })//para saber que estoy arrastrando la imagen y que al soltar coincida con el nombre
     })
+
+
+ // Manejar eventos táctiles para móviles
+ pokemons.forEach(pokemon => {
+    pokemon.addEventListener('touchstart', handleTouchStart, false);
+    pokemon.addEventListener('touchmove', handleTouchMove, false);
+    pokemon.addEventListener('touchend', handleTouchEnd, false);
+});
 
     let names = document.querySelectorAll('.names')
     let equivocado = document.querySelector('.equivocado')
@@ -100,4 +99,41 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
     })
 
 
+}
+// Funciones para manejar eventos táctiles
+let touchData = null;
+
+function handleTouchStart(event) {
+    event.preventDefault();
+    const touch = event.targetTouches[0];
+    touchData = {
+        id: event.target.id,
+        initialX: touch.clientX,
+        initialY: touch.clientY
+    };
+}
+
+function handleTouchMove(event) {
+    event.preventDefault();
+    const touch = event.targetTouches[0];
+    const touchElement = document.getElementById(touchData.id);
+    touchElement.style.position = 'absolute';
+    touchElement.style.left = `${touch.clientX - touchElement.offsetWidth / 2}px`;
+    touchElement.style.top = `${touch.clientY - touchElement.offsetHeight / 2}px`;
+}
+
+function handleTouchEnd(event) {
+    event.preventDefault();
+    const touch = event.changedTouches[0];
+    const droppedElement = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (droppedElement && droppedElement.classList.contains('names')) {
+        const eventMock = new DragEvent('drop', {
+            dataTransfer: new DataTransfer()
+        });
+        eventMock.dataTransfer.setData('text', touchData.id);
+        droppedElement.dispatchEvent(eventMock);
+    }
+    const touchElement = document.getElementById(touchData.id);
+    touchElement.style.position = 'static';
+    touchData = null;
 }
