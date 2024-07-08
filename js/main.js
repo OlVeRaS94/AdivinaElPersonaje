@@ -99,7 +99,6 @@ async function searchPokemonById(id) {//funcion que me trae de una api los poké
     })
 
 
-}
 // Funciones para manejar eventos táctiles
 let touchData = null;
 
@@ -136,4 +135,6 @@ function handleTouchEnd(event) {
     const touchElement = document.getElementById(touchData.id);
     touchElement.style.position = 'static';
     touchData = null;
+}
+
 }
