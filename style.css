@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #ee5522;
+    background-image: url("data:image/svg+xml,..."); /* Mantén tu fondo aquí */
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 100vh;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.menu {
+    margin-top: 20px;
+}
+
+label {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+select {
+    font-size: 1em;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el ratón */
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #ee5522;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3CradialGradient id='a' gradientUnits='objectBoundingBox'%3E%3Cstop offset='0' stop-color='%23FB3'/%3E%3Cstop offset='1' stop-color='%23ee5522'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='750' x2='1550' y2='750'%3E%3Cstop offset='0' stop-color='%23f7882b'/%3E%3Cstop offset='1' stop-color='%23ee5522'/%3E%3C/linearGradient%3E%3Cpath id='s' fill='url(%23b)' d='M1549.2 51.6c-5.4 99.1-20.2 197.6-44.2 293.6c-24.1 96-57.4 189.4-99.3 278.6c-41.9 89.2-92.4 174.1-150.3 253.3c-58 79.2-123.4 152.6-195.1 219c-71.7 66.4-149.6 125.8-232.2 177.2c-82.7 51.4-170.1 94.7-260.7 129.1c-90.6 34.4-184.4 60-279.5 76.3C192.6 1495 96.1 1502 0 1500c96.1-2.1 191.8-13.3 285.4-33.6c93.6-20.2 185-49.5 272.5-87.2c87.6-37.7 171.3-83.8 249.6-137.3c78.4-53.5 151.5-114.5 217.9-181.7c66.5-67.2 126.4-140.7 178.6-218.9c52.3-78.3 96.9-161.4 133-247.9c36.1-86.5 63.8-176.2 82.6-267.6c18.8-91.4 28.6-184.4 29.6-277.4c0.3-27.6 23.2-48.7 50.8-48.4s49.5 21.8 49.2 49.5c0 0.7 0 1.3-0.1 2L1549.2 51.6z'/%3E%3Cg id='g'%3E%3Cuse href='%23s' transform='scale(0.12) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.2) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.25) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(0.3) rotate(-20)'/%3E%3Cuse href='%23s' transform='scale(0.4) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(0.5) rotate(20)'/%3E%3Cuse href='%23s' transform='scale(0.6) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.7) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.835) rotate(-40)'/%3E%3Cuse href='%23s' transform='scale(0.9) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(1.05) rotate(25)'/%3E%3Cuse href='%23s' transform='scale(1.2) rotate(8)'/%3E%3Cuse href='%23s' transform='scale(1.333) rotate(-60)'/%3E%3Cuse href='%23s' transform='scale(1.45) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(1.6) rotate(10)'/%3E%3C/g%3E%3C/defs%3E%3Cg transform='rotate(0 0 0)'%3E%3Cg transform='rotate(0 0 0)'%3E%3Ccircle fill='url(%23a)' r='3000'/%3E%3Cg opacity='0.5'%3E%3Ccircle fill='url(%23a)' r='2000'/%3E%3Ccircle fill='url(%23a)' r='1800'/%3E%3Ccircle fill='url(%23a)' r='1700'/%3E%3Ccircle fill='url(%23a)' r='1651'/%3E%3Ccircle fill='url(%23a)' r='1450'/%3E%3Ccircle fill='url(%23a)' r='1250'/%3E%3Ccircle fill='url(%23a)' r='1175'/%3E%3Ccircle fill='url(%23a)' r='900'/%3E%3Ccircle fill='url(%23a)' r='750'/%3E%3Ccircle fill='url(%23a)' r='500'/%3E%3Ccircle fill='url(%23a)' r='380'/%3E%3Ccircle fill='url(%23a)' r='250'/%3E%3C/g%3E%3Cg transform='rotate(0 0 0)'%3E%3Cuse href='%23g' transform='rotate(10)'/%3E%3Cuse href='%23g' transform='rotate(120)'/%3E%3Cuse href='%23g' transform='rotate(240)'/%3E%3C/g%3E%3Ccircle fill-opacity='0.1' fill='url(%23a)' r='3000'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.main-container {
+    width: 100%;
+    margin: 3.1em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    flex: 1; /* Permite que el contenedor principal ocupe el espacio disponible */
+    padding: 1em; /* Agrega un poco de espacio interno */
+    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+.draggable-elements,
+.droppable-elements {
+    border: 0.13em solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0.6em;
+    padding: 1.5em;
+    min-height: 14.4em;
+    width: 100%; /* Asegúrate de que ocupe el 100% del ancho disponible */
+}
+
+.names {
+    border: 0.2em dashed brown;
+    min-width: 6.3em;
+    padding: 0 0.6em;
+    height: auto; /* Cambia a auto para que se ajuste al contenido */
+    display: grid;
+    place-content: center;
+}
+
+.image {
+    width: 100%; /* Cambia a 100% para que se ajuste al contenedor */
+    max-width: 7.5em; /* Máximo ancho para mantener la proporción */
+}
+
+.equivocado {
+    text-align: center;
+    font-size: 1em;
+    color: white;
+}
+
+.ganar {
+    margin-top: 4.4em;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+.reset {
+    text-align: center;
+    width: 13em;
+    height: 3em;
+    background: #26ff00;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 4em;
+}
+
+.drop-area {
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.drop-area.dragover {
+    background-color: #e0e0e0;
+}
