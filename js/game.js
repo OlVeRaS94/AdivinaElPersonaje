@@ -2,23 +2,22 @@ let draggableElements = document.querySelector('.draggable-elements');
 let droppableElements = document.querySelector('.droppable-elements');
 let pokemonSearched = [];
 let pokemonNames = [];
-let CARDS; // Variable para almacenar el número de Pokémon
+let points = 0;
 
-// Obtener los parámetros de la URL
-const urlParams = new URLSearchParams(window.location.search);
-const numPokemons = parseInt(urlParams.get('numPokemons'));
-const shiny = urlParams.get('shiny') === 'on'; // Devuelve true si el checkbox está marcado
-
-// Iniciar el juego con los parámetros obtenidos
-startGame(numPokemons, shiny);
+document.getElementById('startGame').addEventListener('click', () => {
+    const numPokemons = parseInt(document.getElementById('numPokemons').value);
+    const shiny = document.getElementById('shiny').checked;
+    startGame(numPokemons, shiny);
+});
 
 function startGame(numPokemons, shiny) {
-    CARDS = numPokemons;
-
+    points = 0;
     pokemonSearched = [];
     pokemonNames = [];
+    draggableElements.innerHTML = '';
+    droppableElements.innerHTML = '';
 
-    for (let i = 1; i <= CARDS; i++) {
+    for (let i = 1; i <= numPokemons; i++) {
         let id = getRandomID(1025);
         searchPokemonById(id, shiny);
     }
@@ -36,19 +35,23 @@ async function searchPokemonById(id, shiny) {
     pokemonNames.push(data.name);
     pokemonNames = pokemonNames.sort(() => Math.random() - 0.5);
 
+    updateUI(shiny);
+}
+
+function updateUI(shiny) {
     draggableElements.innerHTML = '';
     pokemonSearched.forEach(pokemon => {
         const imageUrl = shiny ? pokemon.sprites.other['home'].front_shiny : pokemon.sprites.other['home'].front_default;
         draggableElements.innerHTML +=
             `<div class="pokemon">
-                <img id="${pokemon.name}" draggable="true" class="image" src="${imageUrl}" alt="pokemon">
+                <img id="${pokemon.name}" draggable="true" class="image" src="${imageUrl}" alt="${pokemon.name}">
             </div>`;
     });
 
     droppableElements.innerHTML = '';
     pokemonNames.forEach(name => {
         droppableElements.innerHTML +=
-            `<div class="names">
+            `<div class="names" data-name="${name}">
                 <p>${name}</p>
             </div>`;
     });
@@ -58,50 +61,63 @@ async function searchPokemonById(id, shiny) {
 
 function setupDragAndDrop() {
     let pokemons = document.querySelectorAll('.image');
-    pokemons = [...pokemons];
+    let names = document.querySelectorAll('.names');
+    let equivocado = document.querySelector('.equivocado');
+
     pokemons.forEach(pokemon => {
         pokemon.addEventListener('dragstart', event => {
             event.dataTransfer.setData('text', event.target.id);
         });
+
+        pokemon.addEventListener('touchstart', handleTouchStart);
+        pokemon.addEventListener('touchmove', handleTouchMove);
+        pokemon.addEventListener('touchend', handleTouchEnd);
     });
 
-    let names = document.querySelectorAll('.names');
-    let equivocado = document.querySelector('.equivocado');
-    let points = 0;
-    names = [...names];
     names.forEach(name => {
         name.addEventListener('dragover', event => {
             event.preventDefault();
         });
-        name.addEventListener('drop', event => {
-            const draggableElementData = event.dataTransfer.getData('text');
-            let pokemonElement = document.querySelector(`#${draggableElementData}`);
-            if (event.target.innerText === draggableElementData) {
-                points++;
-                event.target.innerHTML = '';
-                event.target.appendChild(pokemonElement);
-                equivocado.innerText = '';
-
-                if (points === CARDS) {
-                    draggableElements.innerHTML = `<p class="Ganar"><h1>¡GANASTE!</h1></p>`;
-                }
-            } else {
-                equivocado.innerText = '¡AY VA, TE HAS EQUIVOCADO!';
-            }
-        });
-    });
-
-    pokemons.forEach(pokemon => {
-        pokemon.addEventListener('touchstart', handleTouchStart, false);
-        pokemon.addEventListener('touchmove', handleTouchMove, false);
-        pokemon.addEventListener('touchend', handleTouchEnd, false);
+        
+        name.addEventListener('drop', event => handleDrop(event, equivocado));
     });
 }
 
+// Auto-scroll for drag
+document.addEventListener('drag', event => {
+    const scrollThreshold = 100;
+    const viewportHeight = window.innerHeight;
+    const mouseY = event.clientY;
+
+    if (viewportHeight - mouseY < scrollThreshold) {
+        window.scrollBy(0, 10);
+    }
+});
+
+function handleDrop(event, equivocado) {
+    event.preventDefault();
+    const pokemonName = event.dataTransfer.getData('text');
+    const targetName = event.target.closest('.names').dataset.name;
+
+    let pokemonElement = document.getElementById(pokemonName);
+    if (targetName === pokemonName) {
+        points++;
+        event.target.innerHTML = '';
+        event.target.appendChild(pokemonElement);
+        equivocado.innerText = '';
+
+        if (points === pokemonSearched.length) {
+            draggableElements.innerHTML = `<p class="Ganar"><h1>¡GANASTE!</h1></p>`;
+        }
+    } else {
+        equivocado.innerText = '¡AY VA, TE HAS EQUIVOCADO!';
+    }
+}
+
+// Touch handlers for mobile
 let touchData = null;
 
 function handleTouchStart(event) {
-    event.preventDefault();
     const touch = event.targetTouches[0];
     touchData = {
         id: event.target.id,
@@ -120,9 +136,9 @@ function handleTouchMove(event) {
 }
 
 function handleTouchEnd(event) {
-    event.preventDefault();
     const touch = event.changedTouches[0];
     const droppedElement = document.elementFromPoint(touch.clientX, touch.clientY);
+    
     if (droppedElement && droppedElement.classList.contains('names')) {
         const eventMock = new DragEvent('drop', {
             dataTransfer: new DataTransfer()
@@ -130,6 +146,7 @@ function handleTouchEnd(event) {
         eventMock.dataTransfer.setData('text', touchData.id);
         droppedElement.dispatchEvent(eventMock);
     }
+    
     const touchElement = document.getElementById(touchData.id);
     touchElement.style.position = 'static';
     touchData = null;
