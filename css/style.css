@@ -6,6 +6,93 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Ajustes responsivos para dispositivos móviles */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .pokemon, 
+    .names {
+        width: 60px;
+    }
+
+    img.image {
+        max-width: 60px;
+    }
+
+    .reset {
+        font-size: 0.9em;
+    }
+}
+    .main-container {
+        padding: 20px;
+        margin: 0 auto;
+        width: 95%;
+        max-width: 500px;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+        color: #333; /* Color del título */
+    }
+
+    .draggable-elements,
+    .droppable-elements {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Espacio entre elementos */
+    padding: 10px;
+    border: 2px dashed #333; /* Borde en lugar de fondo */
+    border-radius: 8px;
+}
+
+.pokemon, 
+.names {
+    width: 70px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+img.image {
+    max-width: 70px;
+    height: auto;
+}
+.names p {
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+}
+
+    .equivocado {
+        font-size: 1em;
+        color: red;
+        margin-top: 15px;
+    }
+
+    .reset {
+        width: 100%;
+        max-width: 200px;
+        font-size: 1em;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .reset:hover {
+        background-color: #45a049;
+    }
+    
+
+
 
 body {
     font-family: 'Press Start 2P', cursive;
