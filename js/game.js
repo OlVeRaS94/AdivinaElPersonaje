@@ -4,11 +4,16 @@ let pokemonSearched = [];
 let pokemonNames = [];
 let points = 0;
 
-document.getElementById('startGame').addEventListener('click', () => {
-    const numPokemons = parseInt(document.getElementById('numPokemons').value);
-    const shiny = document.getElementById('shiny').checked;
-    startGame(numPokemons, shiny);
-});
+// Elimina o comenta este bloque:
+// document.getElementById('startGame').addEventListener('click', ...);
+
+// Obtén los parámetros desde la URL
+const params = new URLSearchParams(window.location.search);
+const numPokemons = parseInt(params.get('numPokemons')) || 5;
+const shiny = params.get('shiny') === 'on' || params.get('shiny') === 'true';
+
+// Inicia el juego automáticamente
+startGame(numPokemons, shiny);
 
 function startGame(numPokemons, shiny) {
     points = 0;
@@ -41,7 +46,20 @@ async function searchPokemonById(id, shiny) {
 function updateUI(shiny) {
     draggableElements.innerHTML = '';
     pokemonSearched.forEach(pokemon => {
-        const imageUrl = shiny ? pokemon.sprites.other['home'].front_shiny : pokemon.sprites.other['home'].front_default;
+        // Intenta obtener la imagen de varias rutas
+        let imageUrl = shiny
+            ? (pokemon.sprites.other?.home?.front_shiny ||
+               pokemon.sprites.other?.['official-artwork']?.front_shiny ||
+               pokemon.sprites.front_shiny)
+            : (pokemon.sprites.other?.home?.front_default ||
+               pokemon.sprites.other?.['official-artwork']?.front_default ||
+               pokemon.sprites.front_default);
+
+        // Si no hay imagen, usa una imagen genérica
+        if (!imageUrl) {
+            imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
+        }
+
         draggableElements.innerHTML +=
             `<div class="pokemon">
                 <img id="${pokemon.name}" draggable="true" class="image" src="${imageUrl}" alt="${pokemon.name}">

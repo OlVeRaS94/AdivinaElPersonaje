@@ -2,16 +2,11 @@ let draggableElements = document.querySelector('.draggable-elements');
 let droppableElements = document.querySelector('.droppable-elements');
 let pokemonSearched = [];
 let pokemonNames = [];
+let CARDS = 0; // Declaración correcta
 
-document.getElementById('startGame').addEventListener('click', () => {
-    const numPokemons = parseInt(document.getElementById('numPokemons').value);
-    const shiny = document.getElementById('shiny').checked;
-    startGame(numPokemons, shiny);
-});
 
 function startGame(numPokemons, shiny) {
     CARDS = numPokemons;
-
     pokemonSearched = [];
     pokemonNames = [];
 
@@ -35,7 +30,19 @@ async function searchPokemonById(id, shiny) {
 
     draggableElements.innerHTML = '';
     pokemonSearched.forEach(pokemon => {
-        const imageUrl = shiny ? pokemon.sprites.other['home'].front_shiny : pokemon.sprites.other['home'].front_default;
+        // Corrección: rutas alternativas y fallback
+        let imageUrl = shiny
+            ? (pokemon.sprites.other?.home?.front_shiny ||
+               pokemon.sprites.other?.['official-artwork']?.front_shiny ||
+               pokemon.sprites.front_shiny)
+            : (pokemon.sprites.other?.home?.front_default ||
+               pokemon.sprites.other?.['official-artwork']?.front_default ||
+               pokemon.sprites.front_default);
+
+        if (!imageUrl) {
+            imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
+        }
+
         draggableElements.innerHTML +=
             `<div class="pokemon">
                 <img id="${pokemon.name}" draggable="true" class="image" src="${imageUrl}" alt="pokemon">
@@ -45,7 +52,7 @@ async function searchPokemonById(id, shiny) {
     droppableElements.innerHTML = '';
     pokemonNames.forEach(name => {
         droppableElements.innerHTML +=
-            `<div class="names">
+            `<div class="names" data-name="${name}">
                 <p>${name}</p>
             </div>`;
     });
@@ -73,10 +80,11 @@ function setupDragAndDrop() {
         name.addEventListener('drop', event => {
             const draggableElementData = event.dataTransfer.getData('text');
             let pokemonElement = document.querySelector(`#${draggableElementData}`);
-            if (event.target.innerText === draggableElementData) {
+            // Corrección: comparación usando data-name
+            if (name.dataset.name === draggableElementData) {
                 points++;
-                event.target.innerHTML = '';
-                event.target.appendChild(pokemonElement);
+                name.innerHTML = '';
+                name.appendChild(pokemonElement);
                 equivocado.innerText = '';
 
                 if (points === CARDS) {
