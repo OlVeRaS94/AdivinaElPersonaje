@@ -75,20 +75,20 @@ img.image {
     }
 
     .reset {
-        width: 100%;
-        max-width: 200px;
-        font-size: 1em;
-        padding: 10px;
-        margin-top: 20px;
-        background-color: #4CAF50;
-        color: white;
+        display: block;
+        margin: 2em auto 0 auto; /* margen superior para separarlo de los nombres */
+        padding: 0.7em 2em;
+        font-size: 1rem;
+        border-radius: 8px;
         border: none;
-        border-radius: 5px;
+        background: #1976d2;
+        color: #fff;
         cursor: pointer;
+        transition: background 0.2s;
     }
 
     .reset:hover {
-        background-color: #45a049;
+        background: #1565c0;
     }
     
 
@@ -156,75 +156,115 @@ body {
     background-size: cover;
 }
 
+/* Estilos responsive para toda la app */
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     min-height: 100vh;
     width: 100vw;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 .main-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100vw;
     min-height: 100vh;
-    padding: 1rem;
+    padding: 2vw 2vw 0 2vw;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 1vw 0;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .draggable-elements, .droppable-elements {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2vw;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 2vw;
 }
 
 .pokemon img {
-    width: 120px;
+    width: clamp(70px, 15vw, 140px);
     height: auto;
     max-width: 100%;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: width 0.2s;
 }
 
 .names {
-    padding: 0.5rem 1rem;
-    background: transparent; /* Sin fondo blanco */
+    padding: 0.5em 1em;
+    background: transparent;
     border-radius: 8px;
-    min-width: 100px;
+    min-width: clamp(70px, 12vw, 120px);
     text-align: center;
-    font-size: 1.1rem;
-    margin: 0.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin: 0.5em;
     box-shadow: none;
     word-break: break-word;
-    transition: font-size 0.2s;
+    transition: font-size 0.2s, min-width 0.2s;
+}
+
+.equivocado {
+    color: #d32f2f;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    text-align: center;
+    margin-bottom: 1vw;
+}
+
+.reset {
+    display: block;
+    margin: 2em auto 0 auto; /* margen superior para separarlo de los nombres */
+    padding: 0.7em 2em;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: #1976d2;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.reset:hover {
+    background: #1565c0;
 }
 
 @media (max-width: 600px) {
     .main-container {
-        padding: 0.5rem;
-    }
-    .pokemon img {
-        width: 80px;
-    }
-    .names {
-        font-size: 0.95rem;
-        min-width: 70px;
-        padding: 0.4rem 0.7rem;
+        padding: 2vw 1vw 0 1vw;
     }
     .draggable-elements, .droppable-elements {
-        gap: 0.5rem;
+        gap: 1vw;
+        margin-bottom: 3vw;
+    }
+    .names {
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+        min-width: clamp(60px, 20vw, 90px);
+        padding: 0.4em 0.7em;
+    }
+    .pokemon img {
+        width: clamp(50px, 22vw, 90px);
+    }
+    .reset {
+        padding: 0.6em 1.2em;
+        font-size: 0.95rem;
+        margin-top: 1.5em;
     }
 }
