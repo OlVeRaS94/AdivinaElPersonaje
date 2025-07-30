@@ -156,82 +156,75 @@ body {
     background-size: cover;
 }
 
-.main-container {
-    width: 100%;
-    margin: 3.1em auto;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
-    flex: 1; /* Permite que el contenedor principal ocupe el espacio disponible */
-    padding: 1em; /* Agrega un poco de espacio interno */
-    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
 }
 
-h1,
-h2 {
-    text-align: center;
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 1rem;
 }
 
-.draggable-elements,
-.droppable-elements {
-    border: 0.13em solid black;
+.draggable-elements, .droppable-elements {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 0.6em;
-    padding: 1.5em;
-    min-height: 14.4em;
-    width: 100%; /* Asegúrate de que ocupe el 100% del ancho disponible */
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.pokemon img {
+    width: 120px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .names {
-    border: 0.2em dashed brown;
-    min-width: 6.3em;
-    padding: 0 0.6em;
-    height: auto; /* Cambia a auto para que se ajuste al contenido */
-    display: grid;
-    place-content: center;
-}
-
-.image {
-    width: 100%; /* Cambia a 100% para que se ajuste al contenedor */
-    max-width: 7.5em; /* Máximo ancho para mantener la proporción */
-}
-
-.equivocado {
+    padding: 0.5rem 1rem;
+    background: transparent; /* Sin fondo blanco */
+    border-radius: 8px;
+    min-width: 100px;
     text-align: center;
-    font-size: 1em;
-    color: white;
+    font-size: 1.1rem;
+    margin: 0.5rem;
+    box-shadow: none;
+    word-break: break-word;
+    transition: font-size 0.2s;
 }
 
-.ganar {
-    margin-top: 4.4em;
-    text-align: center;
-    font-size: 2em;
-    color: white;
-}
-
-.reset {
-    text-align: center;
-    width: 13em;
-    height: 3em;
-    background: #26ff00;
-    color: #000000;
-    cursor: pointer;
-    border-radius: 4em;
-}
-
-.drop-area {
-    width: 300px;
-    height: 300px;
-    border: 2px dashed #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-.drop-area.dragover {
-    background-color: #e0e0e0;
+@media (max-width: 600px) {
+    .main-container {
+        padding: 0.5rem;
+    }
+    .pokemon img {
+        width: 80px;
+    }
+    .names {
+        font-size: 0.95rem;
+        min-width: 70px;
+        padding: 0.4rem 0.7rem;
+    }
+    .draggable-elements, .droppable-elements {
+        gap: 0.5rem;
+    }
 }
